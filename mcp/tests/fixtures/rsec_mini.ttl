@@ -1,0 +1,54 @@
+@prefix schema: <http://schema.org/> .
+@prefix bs: <http://bioschemas.org/> .
+@prefix bst: <http://bioschemas.org/types/> .
+@prefix e: <http://edamontology.org/> .
+@prefix bt: <https://bio.tools/> .
+
+# --- bio.tools records -----------------------------------------------------
+bt:blast a schema:SoftwareApplication ; schema:name "BLAST" ; schema:description "Find similar sequences." ;
+    schema:url <https://blast.example.org> ;
+    schema:applicationSubCategory e:topic_0080 ; schema:featureList e:operation_0292 ; schema:license "MIT" ;
+    bs:input [ a bst:FormalParameter ; schema:name "Query" ; schema:additionalType e:data_2044 ; schema:encodingFormat e:format_1929 ] ;
+    bs:output [ a bst:FormalParameter ; schema:name "Hits" ; schema:additionalType e:data_0863 ; schema:encodingFormat e:format_1982 ] .
+
+bt:clustal a schema:SoftwareApplication ; schema:name "Clustal Omega" ;
+    schema:applicationSubCategory e:topic_0080 ; schema:featureList e:operation_0292 ; schema:license "GPL-3.0" ;
+    bs:input [ a bst:FormalParameter ; schema:name "Sequences" ; schema:additionalType e:data_2044 ; schema:encodingFormat e:format_2200 ] ;
+    bs:output [ a bst:FormalParameter ; schema:name "Alignment" ; schema:additionalType e:data_0863 ; schema:encodingFormat e:format_1982 ] .
+
+bt:alnviewer a schema:SoftwareApplication ; schema:name "AlnViewer" ;
+    schema:applicationSubCategory e:topic_0080 ; schema:license "gpl-3.0" ;
+    bs:input [ a bst:FormalParameter ; schema:name "Alignment" ; schema:additionalType e:data_0863 ; schema:encodingFormat e:format_1982 ] .
+
+bt:phylipviewer a schema:SoftwareApplication ; schema:name "PhylipViewer" ; schema:license "MIT" ;
+    bs:input [ a bst:FormalParameter ; schema:name "Alignment" ; schema:additionalType e:data_0863 ; schema:encodingFormat e:format_1997 ] .
+
+bt:anyviewer a schema:SoftwareApplication ; schema:name "AnyViewer" ;
+    bs:input [ a bst:FormalParameter ; schema:name "Alignment" ; schema:additionalType e:data_0863 ] .
+
+bt:protfold a schema:SoftwareApplication ; schema:name "ProtFold" ;
+    schema:applicationSubCategory e:topic_0102, e:topic_0003 ; schema:featureList e:operation_0295 ; schema:license "MIT" ;
+    bs:input [ a bst:FormalParameter ; schema:name "Protein" ; schema:additionalType e:data_2976 ; schema:encodingFormat e:format_1929 ] ;
+    bs:output [ a bst:FormalParameter ; schema:name "Model" ; schema:additionalType e:data_0883 ; schema:encodingFormat e:format_1476 ] .
+
+bt:seqstats a schema:SoftwareApplication ; schema:name "SeqStats" ; schema:license "Not licensed" ;
+    bs:input [ a bst:FormalParameter ; schema:name "Sequence" ; schema:additionalType e:data_2044 ; schema:encodingFormat e:format_1929 ] .
+
+bt:noio a schema:SoftwareApplication ; schema:name "NoIO" ; schema:applicationSubCategory e:topic_0091 .
+
+# --- linked record from another dump: license comes through schema:identifier ---
+<https://biocontainers.pro/tools/noio> a schema:SoftwareApplication ; schema:name "noio container" ;
+    schema:identifier bt:noio ; schema:license "Apache-2.0" .
+# not a bio.tools tool: must never be returned
+<http://x/galaxy-tool> a schema:SoftwareApplication ; schema:name "Galaxy BLAST" ;
+    schema:applicationSubCategory e:topic_0080 ; schema:license "MIT" .
+
+# --- producers used by the composability tests -----------------------------
+bt:protgen a schema:SoftwareApplication ; schema:name "ProtGen" ;
+    bs:output [ a bst:FormalParameter ; schema:name "Proteins" ; schema:additionalType e:data_2976 ; schema:encodingFormat e:format_1929 ] .
+bt:seqgen a schema:SoftwareApplication ; schema:name "SeqGen" ;
+    bs:output [ a bst:FormalParameter ; schema:name "Seqs" ; schema:additionalType e:data_2044 ; schema:encodingFormat e:format_1929 ] .
+
+# accepts anything ("Data" is EDAM's root data type): only a generic match
+bt:zeta a schema:SoftwareApplication ; schema:name "Zeta" ;
+    bs:input [ a bst:FormalParameter ; schema:name "Anything" ; schema:additionalType e:data_0006 ; schema:encodingFormat e:format_1929 ] .

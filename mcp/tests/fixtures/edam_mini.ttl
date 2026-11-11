@@ -1,0 +1,24 @@
+@prefix e: <http://edamontology.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
+
+e:topic_0091 a owl:Class ; rdfs:label "Bioinformatics" .
+e:topic_0080 a owl:Class ; rdfs:label "Sequence analysis" ; rdfs:subClassOf e:topic_0091 .
+e:topic_0102 a owl:Class ; rdfs:label "Mapping" ; rdfs:subClassOf e:topic_0080 ; oio:hasNarrowSynonym "Read mapping" .
+e:topic_0003 a owl:Class ; rdfs:label "Structure prediction" ; rdfs:subClassOf e:topic_0091 .
+e:operation_0292 a owl:Class ; rdfs:label "Sequence alignment" ; oio:hasDefinition "Arrange sequences to identify similarity." .
+e:operation_0295 a owl:Class ; rdfs:label "Structure prediction" .
+e:operation_2928 a owl:Class ; rdfs:label "Alignment" ; rdfs:subClassOf e:operation_0004 .
+e:operation_0004 a owl:Class ; rdfs:label "Operation" .
+e:data_0006 a owl:Class ; rdfs:label "Data" .
+e:data_0849 a owl:Class ; rdfs:label "Sequence record" ; rdfs:subClassOf e:data_0006 .
+e:data_2044 a owl:Class ; rdfs:label "Sequence" ; rdfs:subClassOf e:data_0849 .
+e:data_2976 a owl:Class ; rdfs:label "Protein sequence" ; rdfs:subClassOf e:data_2044 .
+e:data_0863 a owl:Class ; rdfs:label "Sequence alignment" ; rdfs:subClassOf e:data_0006 .
+e:data_0883 a owl:Class ; rdfs:label "Structure" .
+e:format_2200 a owl:Class ; rdfs:label "FASTA-like (text)" .
+e:format_1929 a owl:Class ; rdfs:label "FASTA" ; rdfs:subClassOf e:format_2200 .
+e:format_1982 a owl:Class ; rdfs:label "ClustalW format" .
+e:format_1997 a owl:Class ; rdfs:label "PHYLIP format" .
+e:format_1476 a owl:Class ; rdfs:label "PDB format" .
